@@ -1,12 +1,10 @@
 package com.bsu;
 
 
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.lang.Math.*;
-import java.util.Scanner;
-
 import com.sun.media.sound.InvalidFormatException;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -15,26 +13,26 @@ public class Main {
 
             System.out.print("Enter n: ");
             int n = tryInputInteger(cin);
-            if(n < 0){
-                throw new InvalidFormatException("Error: matrix size can't be negative");
+            if (n <= 0) {
+                throw new InvalidFormatException("Error: matrix size can't be non-positive");
             }
 
             System.out.print("Enter m: ");
             int m = tryInputInteger(cin);
-            if(m < 0){
-                throw new InvalidFormatException("Error: matrix size can't be negative");
+            if (m <= 0) {
+                throw new InvalidFormatException("Error: matrix size can't be non-positive");
             }
 
-            int [][]matrix = new int[n][m];
-            for(int i=0;i<n;i++){
-                for(int j=0;j<m;j++) {
+            int[][] matrix = new int[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
                     matrix[i][j] = getRandomNumberInRange(0, 10);
                 }
             }
 
             System.out.print("Randomly generated matrix is: \n");
-            for(int i=0;i<n;i++){
-                for(int j=0;j<m;j++){
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
                     System.out.print(matrix[i][j] + " ");
                 }
                 System.out.print('\n');
@@ -42,7 +40,7 @@ public class Main {
 
             System.out.println("The longest series of identical indexes is in line " +
                     MatrixProcessing.findLongestSeries(matrix) +
-                    " (zero-indexed)" );
+                    " (zero-indexed)");
         } catch (Exception ex) {
             System.out.println("Error while reading: " + ex);
         }
@@ -60,7 +58,7 @@ public class Main {
         }
     }
 
-    private static int getRandomNumberInRange(int min, int max){
-        return (int)(Math.random()*((max-min)+1))+min;
+    private static int getRandomNumberInRange(int min, int max) {
+        return (int) (Math.random() * ((max - min) + 1)) + min;
     }
 }
